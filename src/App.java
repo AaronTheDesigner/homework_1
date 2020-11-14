@@ -147,7 +147,7 @@ public class App {
         // AsciiChars.printUpperCase();
         // Powerball.questionaire();
 
-        Powerball.nonMagicNum("bobo", 2, 19, 7, "Idris");
+        Powerball.questionaire();
 
         // System.out.println(petName);
         // System.out.println(petAge);
