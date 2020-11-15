@@ -1,9 +1,30 @@
 import java.util.Scanner;
+
+import jdk.internal.icu.text.BidiBase;
+
 import java.lang.Math;
+import java.lang.Character;
+import java.lang.Integer;
 
 public class App {
 
     public static class Powerball {
+
+        public static void introduction() {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Enter your name: ");
+            String name = scanner.next();
+            System.out.println("Hello, " + name + ". Would you like to proceed? (yes or no)");
+            String passGo = scanner.next();
+            if (passGo.equals("yes")) {
+                questionaire();
+            } else {
+                System.out.println("Feel free to resume another time.");
+            }
+
+            scanner.close();
+        }
 
         public static void questionaire() {
 
@@ -75,8 +96,8 @@ public class App {
                     System.out.println(questions[i]);
                     String answer = scanner.next();
                     if (answer.equals("yes")) {
-                        long powerball = magicNum(luckyNum, qbNum);
-                        nonMagicNum(petName, petAge, modelYear, random, favActor);
+                        nonMagicNum(petName, petAge, modelYear, random, luckyNum, qbNum, favActor);
+                        magicNum(luckyNum, qbNum);
                     } else {
                         System.out.println("Feel free to return any time.");
                     }
@@ -86,9 +107,20 @@ public class App {
             scanner.close();
         }
 
-        public static void nonMagicNum(String petName, int petAge, int modelYear, int random, String favActor) {
-            double randomOne = Math.random();
-            double randomTwo = Math.random();
+        public static void nonMagicNum(String petName, int petAge, int modelYear, int random, int luckyNum, int qbNum, String favActor) {
+
+            char[] petArray = petName.toCharArray();
+            int numOne = petArray[3];
+            int numTwo = modelYear + luckyNum;
+            char[] actorArray = favActor.toCharArray();
+            int numThree = actorArray[0];
+            int numFour = petAge + modelYear;
+            int numFive = qbNum + petAge + luckyNum;
+
+            System.out.print("Lottery numbers: " + numOne + " " + numTwo + " " + numThree + " " + numFour + " " + numFive + " ");
+            
+
+            
         }
 
         public static long magicNum(int luckyNum, int qbNum) {
@@ -99,7 +131,7 @@ public class App {
             if (random >= .5) {
                 double magicBall = qbNum * random;
                 long result = (Math.round(magicBall));
-                System.out.println(result);
+                System.out.println("Magic Ball: " + result);
                 if (result > maxMagic) {
                     System.out.println(result - maxMagic);
                     return result - maxMagic;
@@ -109,7 +141,7 @@ public class App {
             } else {
                 double magicBall = luckyNum * random;
                 long result = (Math.round(magicBall));
-                System.out.println(result);
+                System.out.println("Magic Ball: " + result);
                 if (result > maxMagic) {
                     System.out.println(result - maxMagic);
                     return result - maxMagic;
@@ -124,19 +156,41 @@ public class App {
     public static class AsciiChars {
 
         public static void printNumbers() {
-            // TODO: print valid numeric input
-            System.out.println("numbers");
+            char[] numbers = {'0','9'};
+            
+            for (int i = 0; i < numbers.length; i++) {
+                char character = numbers[i];
+                int ascii = character;
+                System.out.println(ascii);
+            }
 
+            Powerball.introduction();
         }
 
         public static void printLowerCase() {
-            // TODO: print valid lowercase alphabetic input
-            System.out.println("lowercase");
+            char[] lowerCase = {'a','z'};
+            
+            for (int i = 0; i < lowerCase.length; i++) {
+                char character = lowerCase[i];
+                int ascii = character;
+                System.out.println(ascii);
+
+            }
+
+            Powerball.introduction();
         }
 
         public static void printUpperCase() {
-            // TODO: print valid uppercase alphabetic input
-            System.out.println("uppercase");
+            char[] upperCase = {'A','Z'};
+            
+            for (int i = 0; i < upperCase.length; i++) {
+                char character = upperCase[i];
+                int ascii = character;
+                System.out.println(ascii);
+
+            }
+
+            Powerball.introduction();
         }
     }
 
@@ -145,17 +199,7 @@ public class App {
         // AsciiChars.printNumbers();
         // AsciiChars.printLowerCase();
         // AsciiChars.printUpperCase();
-        // Powerball.questionaire();
-
-        Powerball.questionaire();
-
-        // System.out.println(petName);
-        // System.out.println(petAge);
-        // System.out.println(luckyNum);
-        // System.out.println(qbNum);
-        // System.out.println(modelYear);
-        // System.out.println(favActor);
-        // System.out.println(randomNum);
+        // Powerball.introduction();
 
     }
 }
