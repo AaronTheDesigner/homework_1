@@ -1,10 +1,5 @@
 import java.util.Scanner;
-
-import jdk.internal.icu.text.BidiBase;
-
 import java.lang.Math;
-import java.lang.Character;
-import java.lang.Integer;
 
 public class App {
 
@@ -196,10 +191,12 @@ public class App {
 
     public static void main(String[] args) {
         // print the valid characters for input
-        // AsciiChars.printNumbers();
+        AsciiChars.printNumbers();
         // AsciiChars.printLowerCase();
         // AsciiChars.printUpperCase();
         // Powerball.introduction();
 
     }
 }
+
+// https://github.com/AaronTheDesigner/homework_1/blob/main/src/App.java
